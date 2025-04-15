@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог курсов</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1>Доступные курсы</h1>
+    <div class="courses">
+        {% for course in courses %}
+            <div class="course">
+                <h3>{{ course[1] }}</h3>
+                <p>Категория: {{ course[2] }}</p>
+                <p>Цена: {{ course[3] }} руб.</p>
+                <a href="/add_to_cart/{{ course[0] }}">В корзину</a>
+            </div>
+        {% endfor %}
+    </div>
+    <a href="/cart">Корзина ({{ session.get('cart', [])|length }})</a>
+</body>
+</html>
